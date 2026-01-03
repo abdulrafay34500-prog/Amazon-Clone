@@ -1,3 +1,6 @@
+import { cart ,addingToCart } from "../data/cart.js";
+import {products} from "../data/products.js";
+
 let productHTml ='';
 
 products.forEach((products)=>{
@@ -24,7 +27,7 @@ productHTml+= `<div class="product-container">
           </div>
 
           <div class="product-quantity-container">
-            <select>
+            <select class="js-quantity-selectorr-${products.id}">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -40,13 +43,13 @@ productHTml+= `<div class="product-container">
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart">
+          <div class="added-to-cart js-added-to-cart-${products.id}">
             <img src="images/icons/checkmark.png">
             Added
           </div>
 
           <button class="add-to-cart-button button-primary"
-          data-product-name="${products.name}";
+          data-product-id="${products.id}";
           >
             Add to Cart
           </button>
@@ -57,30 +60,23 @@ productHTml+= `<div class="product-container">
 document.querySelector('.js-product-container')
 .innerHTML = productHTml;
 
-document.querySelectorAll('.button-primary')
-.forEach((addButton)=>{
-  addButton.addEventListener('click',()=>{
+///////////////////////////
 
-    let productName = addButton.dataset.productName;
-   let Matchingitem;
-    
-   cart.forEach((item)=>{
+function addedFunction (productId){
+            
+    let added = document.querySelector(`.js-added-to-cart-${productId}`)
 
-      if(productName ===item.productName){
-         Matchingitem = item
-       }
-   })
+    added.classList.add("afterAdded");
 
-    if(Matchingitem){
-      Matchingitem.quantity+=1
-    }else{
-      cart.push({
-        productName : productName,
-        quantity : 1,
-      })
-    }
+    let id =setTimeout(()=>{
+      
+      added.classList.remove("afterAdded")
+    },2000)
 
-    let quantityy = 0;
+ }
+
+ function cartQuantity () {
+     let quantityy = 0;
 
     cart.forEach((item)=>{
       Number(quantityy += item.quantity)
@@ -89,7 +85,20 @@ document.querySelectorAll('.button-primary')
     document.querySelector('.js-cart-quantity')
     .innerHTML = quantityy 
 
-  console.log(cart)
+}
 
-  })
+//////////////////////////
+document.querySelectorAll('.button-primary')
+.forEach((addButton)=>{
+  
+      addButton.addEventListener('click',()=>{
+
+        let productId = addButton.dataset.productId;
+
+      addingToCart(productId);
+       addedFunction(productId);
+       cartQuantity ();
+      
+      })
+
 })
