@@ -209,3 +209,23 @@
   margin-top: 11px;
   margin-bottom: 15px;
 }
+/*///////////////////////////*/
+.Input-quantity{
+  width: 30px;
+  display: none;
+}
+.saving-input-quantity{
+display: none;
+}
+.Visible .Input-quantity{
+  display: initial;
+}
+.Visible .saving-input-quantity{
+  display: initial;
+}
+.Visible .update-quantity-link{
+  display: none;
+}
+.Visible .quantity-in-checkout{
+  display: none;
+}
