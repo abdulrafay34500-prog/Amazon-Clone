@@ -88,6 +88,7 @@ function addedFunction (productId){
 }
 
 //////////////////////////
+cartQuantity ()
 document.querySelectorAll('.button-primary')
 .forEach((addButton)=>{
   

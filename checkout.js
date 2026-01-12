@@ -41,7 +41,8 @@ cart.forEach((item)=>{
               Update
             </span>
 
-            <input type="text" class="Input-quantity">
+            <input type="text" class="Input-quantity
+            Input-new-quantity-${itemInCart.id}">
             <p class="link-primary saving-input-quantity
             js-saving-Button"
             data-product-id = "${itemInCart.id}"
@@ -146,16 +147,23 @@ document.querySelectorAll('.js-update-button')
 document.querySelectorAll('.js-saving-Button')
   .forEach((SaveButton)=>{
     
-      SaveButton.addEventListener('click',(()=>{
-        
-        let productId = SaveButton.dataset.productId
+    SaveButton.addEventListener('click',(()=>{
+      
+      let productId = SaveButton.dataset.productId
 
-        let containor = document.querySelector
-        (`.js-cart-item-container-${productId}`);
+      let containor = document.querySelector
+      (`.js-cart-item-container-${productId}`);
 
-        containor.classList.remove('Visible')
+      containor.classList.remove('Visible')
 
-        
+      let enteredQuantity = document.querySelector
+      (`.Input-new-quantity-${productId}`);
 
-      }))
+      let newQuantity =Number(enteredQuantity.value)
+
+      
+
+      
+
+    }))
 })
