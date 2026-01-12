@@ -1,4 +1,6 @@
-import { cart , deletingItems } from "../data/cart.js";
+import { cart , deletingItems ,
+   updatingItemQuantity ,updatingCheckout }
+ from "../data/cart.js";
 import {products} from "../data/products.js"
 
 let checkOutCartHTML='';
@@ -33,7 +35,9 @@ cart.forEach((item)=>{
           </div>
           <div class="product-quantity">
             <span class="quantity-in-checkout">
-              Quantity: <span class="quantity-label">1</span>
+              Quantity: <span class="quantity-label
+               js-quantity-label-${itemInCart.id}"
+              >${item.quantity}</span>
             </span>
             <span class="update-quantity-link link-primary
             js-update-button"
@@ -109,7 +113,8 @@ cart.forEach((item)=>{
 
 document.querySelector('.js-order-summary')
 .innerHTML= checkOutCartHTML;
-
+///////////////////////////
+updatingCheckout()
 ///////////////////////////
 
 document.querySelectorAll('.js-delete-quantity-link')
@@ -123,6 +128,7 @@ document.querySelectorAll('.js-delete-quantity-link')
         (`.js-cart-item-container-${productId}`)
 
         container.remove();
+        updatingCheckout();
         
     }))
 })
@@ -149,21 +155,23 @@ document.querySelectorAll('.js-saving-Button')
     
     SaveButton.addEventListener('click',(()=>{
       
-      let productId = SaveButton.dataset.productId
+      let productId = SaveButton.dataset.productId;
 
       let containor = document.querySelector
       (`.js-cart-item-container-${productId}`);
 
-      containor.classList.remove('Visible')
+      containor.classList.remove('Visible');
 
       let enteredQuantity = document.querySelector
       (`.Input-new-quantity-${productId}`);
 
-      let newQuantity =Number(enteredQuantity.value)
+      let newQuantity =Number(enteredQuantity.value);
 
-      
+      updatingItemQuantity (productId , newQuantity);
+      updatingCheckout();
 
-      
-
+    
     }))
 })
+///////////////////////////////////
+

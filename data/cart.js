@@ -49,3 +49,33 @@ export function deletingItems (productId){
     cart = newCart;
     SavingInLocalStorage()
  }
+ //////////////////////////////////////
+export function updatingCheckout() {
+    let Quantity =0;
+
+    cart.forEach((item)=>{
+       Quantity+=item.quantity
+    })
+    document.querySelector('.js-return-to-home-link')
+    .innerHTML=Quantity
+    
+ }
+ /////////////////////////////////////
+
+ export function updatingItemQuantity (productId , newQuantity){
+    let matchingITems;
+
+    cart.forEach((item)=>{
+ 
+        if(productId===item.productId){
+          matchingITems =item
+        }
+    })
+    matchingITems.quantity=newQuantity
+
+    document.querySelector(`.js-quantity-label-${productId}`)
+    .innerHTML=newQuantity
+
+    
+     SavingInLocalStorage()
+ }
