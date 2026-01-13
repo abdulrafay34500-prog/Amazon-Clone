@@ -7,6 +7,8 @@ import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 
 
+function renderDeliverySummary() {
+  
 
 
 let checkOutCartHTML='';
@@ -23,7 +25,7 @@ cart.forEach((item)=>{
     })
 
         let itemId =item.DeliveryOptionID;
-        console.log() 
+        
 
         let matchingOptionn;
 
@@ -116,13 +118,14 @@ function SelectDeliveryOption(itemInCartID ,item) {
       ? 'Free'
       :`$${(option.priseCents)/100} -`
       
-      let isChecked = option.DeliveryId===item.DeliveryOptionID;
+      const isChecked = option.DeliveryId==item.DeliveryOptionID;
+     
 
       HTML+=`<div class="delivery-option js-delivery-option"
       data-product-id="${itemInCartID}"
       data-selected-option="${option.DeliveryId}"
       >
-            <input type="radio" 
+            <input ${isChecked ?'checked':''} type="radio" 
             ${isChecked ?'checked':''}
             class="delivery-option-input"
               name="delivery-option-${itemInCartID}"
@@ -151,6 +154,7 @@ document.querySelectorAll('.js-delivery-option')
         let {productId , selectedOption} = option.dataset;
         
         SelectingOption(productId ,selectedOption);
+        renderDeliverySummary();
         
       }))
 });
@@ -215,5 +219,7 @@ document.querySelectorAll('.js-saving-Button')
     
     }))
 })
+}
 ///////////////////////////////////
+renderDeliverySummary();
 

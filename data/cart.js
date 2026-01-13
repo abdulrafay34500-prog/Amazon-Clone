@@ -95,7 +95,7 @@ export function updatingCheckout() {
          
       })
       matchingItems.DeliveryOptionID = selectedOption;
-      console.log(matchingItems.DeliveryOptionID)
+      
       
       SavingInLocalStorage();
  }
