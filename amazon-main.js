@@ -23,7 +23,7 @@ productHTml+= `<div class="product-container">
           </div>
 
           <div class="product-price">
-            ${products.priceCents / 10}
+            $${(products.priceCents / 100).toFixed(2)}
           </div>
 
           <div class="product-quantity-container">

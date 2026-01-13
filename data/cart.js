@@ -1,6 +1,10 @@
 
 
-export let cart =  JSON.parse(localStorage.getItem('Cart')) || [];
+export let cart = JSON.parse(localStorage.getItem('Cart'))  
+ 
+if(!cart){
+   cart =[];
+};
 
  SavingInLocalStorage()
   function SavingInLocalStorage() {
@@ -31,6 +35,7 @@ export let cart =  JSON.parse(localStorage.getItem('Cart')) || [];
             cart.push({
             productId : productId,
             quantity : qquantity,
+            DeliveryOptionID : 2,
             })
         }
       SavingInLocalStorage()   
@@ -78,4 +83,19 @@ export function updatingCheckout() {
 
     
      SavingInLocalStorage()
+ }
+ /////////////////////////////////////
+ export function  SelectingOption(productId ,selectedOption){
+   let matchingItems='';
+      
+      cart.forEach((item)=>{
+         if(item.productId ===productId){
+            matchingItems = item;
+         }
+         
+      })
+      matchingItems.DeliveryOptionID = selectedOption;
+      console.log(matchingItems.DeliveryOptionID)
+      
+      SavingInLocalStorage();
  }
