@@ -4,8 +4,9 @@ import { cart , deletingItems ,
 import {products} from "../data/products.js"
 import {DeliveryOptions} from "./data/deliveryoptions.js"
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+import {updatingPriseSummary} from './priseSummary.js'
 
-
+updatingPriseSummary();
 
 function renderDeliverySummary() {
   
@@ -155,6 +156,7 @@ document.querySelectorAll('.js-delivery-option')
         
         SelectingOption(productId ,selectedOption);
         renderDeliverySummary();
+        updatingPriseSummary();
         
       }))
 });
@@ -175,6 +177,7 @@ document.querySelectorAll('.js-delete-quantity-link')
 
         container.remove();
         updatingCheckout();
+        updatingPriseSummary();
         
     }))
 })
@@ -190,6 +193,7 @@ document.querySelectorAll('.js-update-button')
         (`.js-cart-item-container-${productId}`);
 
         containor.classList.add('Visible')
+        
 
         
 
@@ -215,6 +219,7 @@ document.querySelectorAll('.js-saving-Button')
 
       updatingItemQuantity (productId , newQuantity);
       updatingCheckout();
+      updatingPriseSummary();
 
     
     }))
@@ -222,4 +227,4 @@ document.querySelectorAll('.js-saving-Button')
 }
 ///////////////////////////////////
 renderDeliverySummary();
-
+updatingPriseSummary();
