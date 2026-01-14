@@ -6,7 +6,7 @@ let PriseSummaryHTML='';
 export function updatingPriseSummary() {
 
     
-    
+    let cartQuantity=0;
     let matchingItem;
     let matchingOption;
     let cartPrice=0;
@@ -16,6 +16,8 @@ export function updatingPriseSummary() {
     let TotalCost=0;
 
     cart.forEach((cartItems)=>{
+
+      cartQuantity+=cartItems.quantity
 
         products.forEach((product)=>{
 
@@ -48,7 +50,7 @@ export function updatingPriseSummary() {
           </div>
 
           <div class="payment-summary-row">
-            <div>Items (3):</div>
+            <div>Items (${cartQuantity}):</div>
             <div class="payment-summary-money">$${cartPrice /100}</div>
           </div>
 

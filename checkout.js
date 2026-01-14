@@ -175,8 +175,9 @@ document.querySelectorAll('.js-delete-quantity-link')
         let container = document.querySelector
         (`.js-cart-item-container-${productId}`)
 
-        container.remove();
+        
         updatingCheckout();
+        renderDeliverySummary();
         updatingPriseSummary();
         
     }))
