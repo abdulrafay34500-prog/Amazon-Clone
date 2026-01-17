@@ -1,14 +1,14 @@
 import {cart} from './data/cart.js'
-import {products} from './data/products.js'
-import {DeliveryOptions} from './data/deliveryoptions.js'
+import {products , GettingProductInfo} from './data/products.js'
+import {DeliveryOptions , matchingDeliveryOPtion} from './data/deliveryoptions.js'
 
 let PriseSummaryHTML='';
 export function updatingPriseSummary() {
 
     
     let cartQuantity=0;
-    let matchingItem;
-    let matchingOption;
+    
+    
     let cartPrice=0;
     let shippingFEE =0;
     let lotalBeforeTax =0;
@@ -19,21 +19,9 @@ export function updatingPriseSummary() {
 
       cartQuantity+=cartItems.quantity
 
-        products.forEach((product)=>{
+        let matchingItem=GettingProductInfo(cartItems);
 
-           if(cartItems.productId ==product.id){
-            matchingItem=product
-            }
-           
-        });
-
-        DeliveryOptions.forEach((option)=>{
-
-            if (option.DeliveryId ==cartItems.DeliveryOptionID){
-                  matchingOption =option
-            }
-            
-        });
+        let matchingOption= matchingDeliveryOPtion(cartItems);
   
         
          cartPrice += cartItems.quantity* matchingItem.priceCents; 

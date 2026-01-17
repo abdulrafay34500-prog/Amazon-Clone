@@ -1,3 +1,17 @@
+export function GettingProductInfo(item) {
+      let itemInCart='';
+
+    products.forEach((product)=>{
+        if(item.productId === product.id){
+            itemInCart = product
+        }
+
+    })
+    return itemInCart;
+  
+}
+
+
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",

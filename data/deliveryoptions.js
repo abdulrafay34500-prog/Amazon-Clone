@@ -1,3 +1,17 @@
+export function matchingDeliveryOPtion(cartItems) {
+    
+    let matchingOption =''
+    DeliveryOptions.forEach((option)=>{
+
+            if (option.DeliveryId ==cartItems.DeliveryOptionID){
+                  matchingOption =option
+            }
+            
+        });
+
+        return matchingOption;
+}
+
 export const DeliveryOptions=[{
     DeliveryId : 1,
     Days : 7,
