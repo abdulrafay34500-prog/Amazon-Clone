@@ -61,18 +61,8 @@ export function updatingCheckout() {
     cart.forEach((item)=>{
        Quantity+=item.quantity
     })
-    let itemORitems='';
-
-    if(Quantity === 0 ){
-      itemORitems=''
-    }else if(Quantity === 1){
-       itemORitems ='item'
-    }else if(Quantity >= 1 ){
-       itemORitems= 'items'
-    }
-
     document.querySelector('.js-return-to-home-link')
-    .innerHTML=`${Quantity} ${itemORitems} `
+    .innerHTML=Quantity
     
  }
  /////////////////////////////////////
