@@ -1,12 +1,19 @@
 import { cart , deletingItems ,
    updatingItemQuantity ,updatingCheckout ,SelectingOption }
- from "../data/cart.js";
-import {products ,GettingProductInfo} from "../data/products.js"
+ from "../data/cart.js"
+import {products ,GettingProductInfo , fetchinhProducts} from "../data/products.js"
 import {DeliveryOptions , matchingDeliveryOPtion} from "./data/deliveryoptions.js"
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {updatingPriseSummary} from './priseSummary.js'
+import './data/cart-oop.js'
 
-updatingPriseSummary();
+
+fetchinhProducts().then(()=>{
+      updatingPriseSummary()
+    renderDeliverySummary()
+})
+
+
 
 function renderDeliverySummary() {
   
@@ -213,5 +220,5 @@ document.querySelectorAll('.js-saving-Button')
 })
 }
 ///////////////////////////////////
-renderDeliverySummary();
-updatingPriseSummary();
+
+

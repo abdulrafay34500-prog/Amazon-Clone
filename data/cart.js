@@ -1,10 +1,14 @@
 
 
-export let cart = JSON.parse(localStorage.getItem('Cart'))  
- 
-if(!cart){
-   cart =[];
-};
+export let cart;
+
+function assemblingCart() {
+    cart = JSON.parse(localStorage.getItem('Cart'))||[]
+   
+   return cart
+}
+ assemblingCart()
+
 
  SavingInLocalStorage()
   function SavingInLocalStorage() {
