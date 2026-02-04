@@ -1,6 +1,7 @@
 import {cart} from './data/cart.js'
 import {products , GettingProductInfo} from './data/products.js'
 import {DeliveryOptions , matchingDeliveryOPtion} from './data/deliveryoptions.js'
+import {backendOrders , orders} from './data/orders.js'
 
 let PriseSummaryHTML='';
 export function updatingPriseSummary() {
@@ -62,7 +63,7 @@ export function updatingPriseSummary() {
             <div class="payment-summary-money">$${(TotalCost /100).toFixed(2)}</div>
           </div>
 
-          <button class="place-order-button button-primary">
+          <button class="place-order-button button-primary js-button-primary">
             Place your order
           </button>`
          
@@ -70,4 +71,29 @@ export function updatingPriseSummary() {
 document.querySelector('.js-payment-summary')
 .innerHTML= PriseSummaryHTML;    
     
+
+  document.querySelector('.js-button-primary')
+
+    .addEventListener('click',async()=>{
+
+        let responce = await fetch('https://supersimplebackend.dev/orders' ,{
+          method :'POST',
+          headers :{
+            'Content-Type' : 'application/json'
+          },
+          body :JSON.stringify({
+            cart : cart
+          })
+      });
+
+      let order = await responce.json()
+      backendOrders(order)
+
+      console.log(orders)
+
+
+
+    })
+
+
 }

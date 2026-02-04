@@ -39,7 +39,7 @@ function assemblingCart() {
             cart.push({
             productId : productId,
             quantity : qquantity,
-            DeliveryOptionID : 2,
+            DeliveryOptionID : 1,
             })
         }
       SavingInLocalStorage()   
