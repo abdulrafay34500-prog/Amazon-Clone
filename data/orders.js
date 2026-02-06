@@ -1,3 +1,7 @@
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+import {products ,fetchinhProducts} from './products.js';
+import {cart} from './cart.js';
+console.log(cart)
 export const orders =JSON.parse(localStorage.getItem('order'))||[]
 
 export function backendOrders(orderr) {
@@ -8,3 +12,91 @@ export function backendOrders(orderr) {
 function savingLocalStorage() {
     localStorage.setItem('order' ,JSON.stringify(orders))
 }
+
+gettingProductsFromBankend()
+async function gettingProductsFromBankend() {
+    await fetchinhProducts()
+    settingOrderPage()
+     
+}
+
+function settingOrderPage() {
+        
+
+    let HTML='';
+    let productt='';
+    let productPrise='';
+    let productQuantity='';
+
+    let TodayDate =dayjs().format('MMMM DD')
+
+    orders.forEach((order)=>{
+
+        products.forEach((Product)=>{
+             if(order.id===Product.id){
+                 console.log(order)
+             }
+              
+             
+              
+        })
+        
+            console.log(order)
+    HTML+=`<div class="order-container">
+
+          <div class="order-header">
+            <div class="order-header-left-section">
+              <div class="order-date">
+                <div class="order-header-label">Order Placed:</div>
+                <div>${TodayDate}</div>
+              </div>
+              <div class="order-total">
+                <div class="order-header-label">Total:</div>
+                <div>$${(order.totalCostCents /100).toFixed(2)}</div>
+              </div>
+            </div>
+
+            <div class="order-header-right-section">
+              <div class="order-header-label">Order ID:</div>
+              <div>${order.id}</div>
+            </div>
+          </div>
+
+          <div class="order-details-grid">
+            <div class="product-image-container">
+              <img src="images/products/intermediate-composite-basketball.jpg">
+            </div>
+
+            <div class="product-details">
+              <div class="product-name">
+                Intermediate Size Basketball
+              </div>
+              <div class="product-delivery-date">
+                Arriving on: $June 17
+              </div>
+              <div class="product-quantity">
+                Quantity: 2
+              </div>
+              <button class="buy-again-button button-primary">
+                <img class="buy-again-icon" src="images/icons/buy-again.png">
+                <span class="buy-again-message">Buy it again</span>
+              </button>
+            </div>
+
+            <div class="product-actions">
+              <a href="tracking.html">
+                <button class="track-package-button button-secondary">
+                  Track package
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>`
+    
+    })
+
+    document.querySelector('.js-order-grid')
+    .innerHTML+=HTML;
+
+}
+

@@ -8,10 +8,16 @@ import {updatingPriseSummary} from './priseSummary.js'
 import './data/cart-oop.js'
 
 
-fetchinhProducts().then(()=>{
+
+
+Promise.all([
+fetchinhProducts()
+]).then(()=>{
       updatingPriseSummary()
     renderDeliverySummary()
 })
+
+
 
 
 

@@ -91,7 +91,7 @@ document.querySelector('.js-payment-summary')
 
       console.log(orders)
 
-
+      window.location.href ='orders.html';
 
     })
 
