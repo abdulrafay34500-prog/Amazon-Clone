@@ -27,7 +27,7 @@ export function updatingPriseSummary() {
         
          cartPrice += cartItems.quantity* matchingItem.priceCents; 
          shippingFEE+=matchingOption.priseCents;
-         lotalBeforeTax+=cartPrice+shippingFEE;
+         lotalBeforeTax=cartPrice+shippingFEE;
          TaxAmount +=lotalBeforeTax*0.1;
          TotalCost+=lotalBeforeTax+TaxAmount
 
