@@ -7,7 +7,8 @@ fetchinhProducts().then (()=>{
 })
  let produc=orders[0].products
 console.log(orders)
-settingOrderPage()
+
+
 
 function settingOrderPage() {
         
