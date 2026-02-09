@@ -13,6 +13,7 @@ function settingOrderPage() {
         
 
     let HTML='';
+    let headerHTMLL=''
     let productt='';
    
 
@@ -26,6 +27,22 @@ function settingOrderPage() {
         orders.forEach((order)=>{
              totalOrderPrise+=order.totalCostCents
              orderIdd=order.id
+
+           headerHTMLL=` <div class="order-header-left-section">
+              <div class="order-date">
+                <div class="order-header-label">Order Placed:</div>
+                <div>${TodayDate}</div>
+              </div>
+              <div class="order-total">
+                <div class="order-header-label">Total:</div>
+                <div>$${(totalOrderPrise /100).toFixed(2)}</div>
+              </div>
+            </div>
+
+            <div class="order-header-right-section">
+              <div class="order-header-label">Order ID:</div>
+              <div>${orderIdd}</div>
+            </div>`
         })
         
 
@@ -53,28 +70,7 @@ function settingOrderPage() {
         })
       
            
-    HTML+=`<div class="order-container">
-
-          <div class="order-header">
-            <div class="order-header-left-section">
-              <div class="order-date">
-                <div class="order-header-label">Order Placed:</div>
-                <div>${TodayDate}</div>
-              </div>
-              <div class="order-total">
-                <div class="order-header-label">Total:</div>
-                <div>$${(totalOrderPrise /100).toFixed(2)}</div>
-              </div>
-            </div>
-
-            <div class="order-header-right-section">
-              <div class="order-header-label">Order ID:</div>
-              <div>${orderIdd}</div>
-            </div>
-          </div>
-
-          <div class="order-details-grid">
-            <div class="product-image-container">
+    HTML+=` <div class="product-image-container">
               <img src=${productt.image}>
             </div>
 
@@ -100,13 +96,15 @@ function settingOrderPage() {
                   Track package
                 </button>
               </a>
-            </div>
-          </div>
-        </div>`
+            </div>`
     
     })
 
-    document.querySelector('.js-order-grid')
+   document.querySelector('.js-order-header') 
+    .innerHTML=headerHTMLL;
+
+
+    document.querySelector('.js-order-details') 
     .innerHTML=HTML;
 
 }

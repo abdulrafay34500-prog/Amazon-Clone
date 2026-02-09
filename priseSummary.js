@@ -28,8 +28,8 @@ export function updatingPriseSummary() {
          cartPrice += cartItems.quantity* matchingItem.priceCents; 
          shippingFEE+=matchingOption.priseCents;
          lotalBeforeTax=cartPrice+shippingFEE;
-         TaxAmount +=lotalBeforeTax*0.1;
-         TotalCost+=lotalBeforeTax+TaxAmount
+         TaxAmount =lotalBeforeTax*0.1;
+         TotalCost=lotalBeforeTax+TaxAmount
 
         
     })
