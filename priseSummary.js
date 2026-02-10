@@ -73,29 +73,31 @@ document.querySelector('.js-payment-summary')
     
 
   document.querySelector('.js-button-primary')
+ .addEventListener('click',async()=>{
 
-    .addEventListener('click',async()=>{
+    if(cart.length !== 0){
 
-        let responce = await fetch('https://supersimplebackend.dev/orders' ,{
-          method :'POST',
-          headers :{
-            'Content-Type' : 'application/json'
-          },
-          body :JSON.stringify({
-            cart : cart
-          })
-      });
+              let responce = await fetch('https://supersimplebackend.dev/orders' ,{
+                method :'POST',
+                headers :{
+                  'Content-Type' : 'application/json'
+                },
+                body :JSON.stringify({
+                  cart : cart
+                })
+            });
 
-      let order = await responce.json()
-      backendOrders(order)
+            let order = await responce.json()
+            backendOrders(order)
 
-      console.log(orders)
+            console.log(orders)
 
-      window.location.href ='orders.html';
-     
-      emptyingcart()
-      
-    })
+            window.location.href ='orders.html';
+          
+            emptyingcart()
+            
+        }
+  })
 
 
 }

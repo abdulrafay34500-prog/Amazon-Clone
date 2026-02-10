@@ -14,5 +14,10 @@ function savingLocalStorage() {
 }
 
  
+function EmptyOrderArray() {
+    let empty = [];
+    orders =empty;
 
+    savingLocalStorage()
+}
 
