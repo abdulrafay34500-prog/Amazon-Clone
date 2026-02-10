@@ -113,7 +113,7 @@ function renderAmazonMain(){
 
           let qquantity = Number(selectedQuntity.value);
           
-
+               
         addingToCart(productId , qquantity);
         addedFunction(productId);
         cartQuantity ();
