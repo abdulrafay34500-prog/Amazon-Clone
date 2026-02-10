@@ -1,4 +1,4 @@
-import {cart} from './data/cart.js'
+import {cart , emptyingcart} from './data/cart.js'
 import {products , GettingProductInfo} from './data/products.js'
 import {DeliveryOptions , matchingDeliveryOPtion} from './data/deliveryoptions.js'
 import {backendOrders , orders} from './data/orders.js'
@@ -92,7 +92,9 @@ document.querySelector('.js-payment-summary')
       console.log(orders)
 
       window.location.href ='orders.html';
-
+     
+      emptyingcart()
+      
     })
 
 

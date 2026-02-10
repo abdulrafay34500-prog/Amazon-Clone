@@ -43,6 +43,8 @@ function settingOrderPage() {
     order.products.forEach((orderProduct) => {
       const product = products.find(p => p.id === orderProduct.productId);
 
+       
+
       const deliveryDate = new Date(orderProduct.estimatedDeliveryTime)
         .toLocaleDateString('en-US', {
           month: 'long',
@@ -63,9 +65,9 @@ function settingOrderPage() {
             <div class="product-quantity">
               Quantity: ${orderProduct.quantity}
             </div>
-            <button class="buy-again-button button-primary">
+            <button class="buy-again-button button-primary js-buy-again">
               <img class="buy-again-icon" src="images/icons/buy-again.png">
-              <span class="buy-again-message">Buy it again</span>
+              <span class="buy-again-message ">Buy it again</span>
             </button>
           </div>
 
@@ -84,4 +86,16 @@ function settingOrderPage() {
   });
 
   document.querySelector('.js-orders-grid').innerHTML = pageHTML;
+
+
+  document.querySelectorAll('.js-buy-again').forEach((buyAgain)=>{
+
+      buyAgain.addEventListener('click',(()=>{
+          
+
+        
+      }))
+
+  })
 }
+

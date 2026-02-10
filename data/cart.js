@@ -10,8 +10,8 @@ function assemblingCart() {
  assemblingCart()
 
 
- SavingInLocalStorage()
-  function SavingInLocalStorage() {
+  SavingInLocalStorage()
+  export function SavingInLocalStorage() {
     localStorage.setItem('Cart',JSON.stringify(cart))
  }
 /////////////////////////////////
@@ -112,4 +112,13 @@ export function updatingCheckout() {
       
       
       SavingInLocalStorage();
+ }
+
+ /////////////////////////////////////////
+
+ export function emptyingcart() {
+    let emptyCart =[]
+       cart =emptyCart
+
+       SavingInLocalStorage()
  }
