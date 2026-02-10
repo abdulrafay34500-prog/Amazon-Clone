@@ -5,107 +5,83 @@ import {products , fetchinhProducts} from '../data/products.js';
 fetchinhProducts().then (()=>{
  settingOrderPage()
 })
- let produc=orders[0].products
+
 console.log(orders)
 
 
 
 function settingOrderPage() {
-        
+  let pageHTML = '';
 
-    let HTML='';
-    let headerHTMLL=''
-    let productt='';
-   
+  orders.forEach((order) => {
+    const orderDate = dayjs(order.orderTime).format('MMMM DD');
+    const totalPrice = (order.totalCostCents / 100).toFixed(2);
 
-    let TodayDate =dayjs().format('MMMM DD')
-
-    produc.forEach((product)=>{
-
-        let totalOrderPrise =0
-        let orderIdd='';
-
-        orders.forEach((order)=>{
-             totalOrderPrise+=order.totalCostCents
-             orderIdd=order.id
-
-           headerHTMLL=` <div class="order-header-left-section">
-              <div class="order-date">
-                <div class="order-header-label">Order Placed:</div>
-                <div>${TodayDate}</div>
-              </div>
-              <div class="order-total">
-                <div class="order-header-label">Total:</div>
-                <div>$${(totalOrderPrise /100).toFixed(2)}</div>
-              </div>
+    // ORDER HEADER
+    pageHTML += `
+      <div class="order-container">
+        <div class="order-header">
+          <div class="order-header-left-section">
+            <div class="order-date">
+              <div class="order-header-label">Order Placed:</div>
+              <div>${orderDate}</div>
             </div>
+            <div class="order-total">
+              <div class="order-header-label">Total:</div>
+              <div>$${totalPrice}</div>
+            </div>
+          </div>
 
-            <div class="order-header-right-section">
-              <div class="order-header-label">Order ID:</div>
-              <div>${orderIdd}</div>
-            </div>`
-        })
-        
+          <div class="order-header-right-section">
+            <div class="order-header-label">Order ID:</div>
+            <div>${order.id}</div>
+          </div>
+        </div>
+    `;
 
-    let orderId =product.productId
-    let quantity = product.quantity
+    // PRODUCTS FOR THIS ORDER ONLY
+    order.products.forEach((orderProduct) => {
+      const product = products.find(p => p.id === orderProduct.productId);
 
-    let deliveryTime= product.estimatedDeliveryTime
-    let time = new Date(deliveryTime)
-    const formatted = time.toLocaleDateString('en-US', {
-    month: 'long',   
-    day: 'numeric',
-    hour12: true     
+      const deliveryDate = new Date(orderProduct.estimatedDeliveryTime)
+        .toLocaleDateString('en-US', {
+          month: 'long',
+          day: 'numeric'
+        });
+
+      pageHTML += `
+        <div class="order-details-grid">
+          <div class="product-image-container">
+            <img src="${product.image}">
+          </div>
+
+          <div class="product-details">
+            <div class="product-name">${product.name}</div>
+            <div class="product-delivery-date">
+              Arriving on: ${deliveryDate}
+            </div>
+            <div class="product-quantity">
+              Quantity: ${orderProduct.quantity}
+            </div>
+            <button class="buy-again-button button-primary">
+              <img class="buy-again-icon" src="images/icons/buy-again.png">
+              <span class="buy-again-message">Buy it again</span>
+            </button>
+          </div>
+
+          <div class="product-actions">
+            <a href="tracking.html">
+              <button class="track-package-button button-secondary">
+                Track package
+              </button>
+            </a>
+          </div>
+        </div>
+      `;
     });
 
+    pageHTML += `</div>`; // close order-container
+  });
 
-
-
-        products.forEach((Product)=>{
-             if(orderId==Product.id){
-                 productt=Product
-             }
-              
-             
-              
-        })
-      
-           
-    HTML+=` <div class="product-image-container">
-              <img src=${productt.image}>
-            </div>
-
-            <div class="product-details">
-              <div class="product-name">
-                ${productt.name}
-              </div>
-              <div class="product-delivery-date">
-                Arriving on: ${formatted}
-              </div>
-              <div class="product-quantity">
-                Quantity: ${quantity}
-              </div>
-              <button class="buy-again-button button-primary">
-                <img class="buy-again-icon" src="images/icons/buy-again.png">
-                <span class="buy-again-message">Buy it again</span>
-              </button>
-            </div>
-
-            <div class="product-actions">
-              <a href="tracking.html">
-                <button class="track-package-button button-secondary">
-                  Track package
-                </button>
-              </a>
-            </div>`
-    
-    })
-
-   document.querySelector('.js-order-header') 
-    .innerHTML=headerHTMLL;
-
-
-    document.querySelector('.js-order-details') 
-    .innerHTML=HTML;
-
+  document.querySelector('.js-orders-grid').innerHTML = pageHTML;
 }
