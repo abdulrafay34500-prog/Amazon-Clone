@@ -2,6 +2,7 @@ import {cart , emptyingcart} from './data/cart.js'
 import {products , GettingProductInfo , fetchinhProducts} from './data/products.js'
 import {DeliveryOptions , matchingDeliveryOPtion} from './data/deliveryoptions.js'
 import {backendOrders , orders} from './data/orders.js'
+import {renderDeliverySummary} from './checkout.js'
 
 fetchinhProducts()
 .then(()=>{

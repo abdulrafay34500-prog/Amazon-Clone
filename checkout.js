@@ -21,7 +21,7 @@ fetchinhProducts()
 
 
 
-function renderDeliverySummary() {
+export function renderDeliverySummary() {
   
 
 
