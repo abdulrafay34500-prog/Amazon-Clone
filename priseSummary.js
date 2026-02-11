@@ -6,7 +6,7 @@ import {backendOrders , orders} from './data/orders.js'
 fetchinhProducts()
 .then(()=>{
       updatingPriseSummary()
-    
+    renderDeliverySummary()
 })
 
 

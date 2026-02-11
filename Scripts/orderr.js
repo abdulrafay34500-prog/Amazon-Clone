@@ -1,7 +1,7 @@
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {orders} from '../data/orders.js'
 import {products , fetchinhProducts} from '../data/products.js';
-
+import {addingToCart} from '../data/cart.js'
 
 fetchinhProducts().then (()=>{
  settingOrderPage()
@@ -68,6 +68,7 @@ function settingOrderPage() {
             </div>
             <button class="buy-again-button button-primary js-buy-again"
             data-product-id ="${product.id}"
+            data-product-qu ="${orderProduct.quantity}"
             >
               <img class="buy-again-icon" src="images/icons/buy-again.png">
               <span class="buy-again-message ">Buy it again</span>
@@ -97,8 +98,11 @@ function settingOrderPage() {
       buyAgain.addEventListener('click',(()=>{
           
         let productId =buyAgain.dataset.productId
-
-        console.log(productId)
+         let quantity =buyAgain.dataset.productQu
+ 
+       
+        
+        addingToCart(productId , quantity)
         
       }))
 
