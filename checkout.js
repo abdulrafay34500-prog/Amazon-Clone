@@ -13,7 +13,7 @@ import './data/cart-oop.js'
 
 fetchinhProducts()
 .then(()=>{
-      updatingPriseSummary()
+     updatingPriseSummary()
     renderDeliverySummary()
 })
 
