@@ -1,7 +1,7 @@
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {orders} from '../data/orders.js'
 import {products , fetchinhProducts} from '../data/products.js';
-import {addingToCart} from '../data/cart.js'
+
 
 fetchinhProducts().then (()=>{
  settingOrderPage()
@@ -74,8 +74,8 @@ function settingOrderPage() {
             </button>
           </div>
 
-          <div class="product-actions">
-            <a href="tracking.html">
+          <div class="product-actions js-track-pkg">
+            <a href="tracking.html?orderId=${product.id}&deliveryDay=${deliveryDate}">
               <button class="track-package-button button-secondary">
                 Track package
               </button>
@@ -90,6 +90,7 @@ function settingOrderPage() {
 
   document.querySelector('.js-orders-grid').innerHTML = pageHTML;
 
+//////////////////////////////////////////////////////
 
   document.querySelectorAll('.js-buy-again').forEach((buyAgain)=>{
 
@@ -102,5 +103,24 @@ function settingOrderPage() {
       }))
 
   })
+//////////////////////////////////////////////////
+   document.querySelectorAll('.track-package-button').forEach((trackBtn)=>{
+
+      trackBtn.addEventListener('click',(()=>{
+          
+       
+
+        
+        
+      }))
+
+  })
+
+
+
 }
 
+///////////////////////////////////////////////////////
+
+
+ /*<a href="tracking.html">*/

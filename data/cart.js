@@ -16,12 +16,9 @@ function assemblingCart() {
  }
 /////////////////////////////////
  
- export function addingToCart (productId){
+ export function addingToCart (productId , qquantity){
 
-    let selectedQuntity = document.querySelector
-        (`.js-quantity-selectorr-${productId}`);
-
-        let qquantity = Number(selectedQuntity.value);
+    
         
 
         let Matchingitem;

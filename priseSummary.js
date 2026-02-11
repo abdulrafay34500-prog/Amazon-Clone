@@ -1,7 +1,14 @@
 import {cart , emptyingcart} from './data/cart.js'
-import {products , GettingProductInfo} from './data/products.js'
+import {products , GettingProductInfo , fetchinhProducts} from './data/products.js'
 import {DeliveryOptions , matchingDeliveryOPtion} from './data/deliveryoptions.js'
 import {backendOrders , orders} from './data/orders.js'
+
+fetchinhProducts()
+.then(()=>{
+      updatingPriseSummary()
+    
+})
+
 
 let PriseSummaryHTML='';
 export function updatingPriseSummary() {

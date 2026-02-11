@@ -10,9 +10,9 @@ import './data/cart-oop.js'
 
 
 
-Promise.all([
+
 fetchinhProducts()
-]).then(()=>{
+.then(()=>{
       updatingPriseSummary()
     renderDeliverySummary()
 })
