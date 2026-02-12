@@ -71,15 +71,19 @@ function settingOrderPage() {
             </div>
             <button class="buy-again-button button-primary js-buy-again"
             data-product-id ="${product.id}"
+<<<<<<< HEAD
             data-product-quantity ="${orderProduct.quantity}"
+=======
+            data-product-qu ="${orderProduct.quantity}"
+>>>>>>> e66917f3658d56ef1a957a0cd4d8b55e3fe61585
             >
               <img class="buy-again-icon" src="images/icons/buy-again.png">
               <span class="buy-again-message ">Buy it again</span>
             </button>
           </div>
 
-          <div class="product-actions">
-            <a href="tracking.html">
+          <div class="product-actions js-track-pkg">
+            <a href="tracking.html?orderId=${product.id}&deliveryDay=${deliveryDate}">
               <button class="track-package-button button-secondary">
                 Track package
               </button>
@@ -94,12 +98,14 @@ function settingOrderPage() {
 
   document.querySelector('.js-orders-grid').innerHTML = pageHTML;
 
+//////////////////////////////////////////////////////
 
   document.querySelectorAll('.js-buy-again').forEach((buyAgain)=>{
 
       buyAgain.addEventListener('click',(()=>{
           
         let productId =buyAgain.dataset.productId
+<<<<<<< HEAD
         let Quantity =buyAgain.dataset.productQuantity
 
         console.log(Quantity)
@@ -107,9 +113,35 @@ function settingOrderPage() {
 
         renderDeliverySummary()
         updatingPriseSummary()
+=======
+         let quantity =buyAgain.dataset.productQu
+ 
+      let  quantityy = Number(quantity)
+        
+        addingToCart(productId , quantityy)
+>>>>>>> e66917f3658d56ef1a957a0cd4d8b55e3fe61585
         
       }))
 
   })
+//////////////////////////////////////////////////
+   document.querySelectorAll('.track-package-button').forEach((trackBtn)=>{
+
+      trackBtn.addEventListener('click',(()=>{
+          
+       
+
+        
+        
+      }))
+
+  })
+
+
+
 }
 
+///////////////////////////////////////////////////////
+
+
+ /*<a href="tracking.html">*/
