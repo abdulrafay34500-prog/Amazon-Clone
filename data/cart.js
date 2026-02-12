@@ -16,16 +16,16 @@ function assemblingCart() {
  }
 /////////////////////////////////
  
-<<<<<<< HEAD
- export function addingToCart (productId ,qquantity){
+
+
 
     
-=======
+
  export function addingToCart (productId , qquantity){
 
     
         
->>>>>>> e66917f3658d56ef1a957a0cd4d8b55e3fe61585
+
 
         let Matchingitem;
         
