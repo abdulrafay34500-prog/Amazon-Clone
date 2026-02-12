@@ -105,8 +105,8 @@ function settingOrderPage() {
 
         
         let Quantity =buyAgain.dataset.productQuantity
-
         let Quantityy = Number(Quantity)
+        
         addingToCart(productId , Quantityy)
 
         
