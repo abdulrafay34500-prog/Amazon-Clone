@@ -2,8 +2,7 @@ import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {orders} from '../data/orders.js'
 import {products , fetchinhProducts} from '../data/products.js';
 import {addingToCart} from '../data/cart.js'
-import {renderDeliverySummary} from '../checkout.js'
-import {updatingPriseSummary} from '../priseSummary.js'
+
 
 fetchinhProducts().then (()=>{
  settingOrderPage()
@@ -71,11 +70,9 @@ function settingOrderPage() {
             </div>
             <button class="buy-again-button button-primary js-buy-again"
             data-product-id ="${product.id}"
-<<<<<<< HEAD
+
             data-product-quantity ="${orderProduct.quantity}"
-=======
-            data-product-qu ="${orderProduct.quantity}"
->>>>>>> e66917f3658d56ef1a957a0cd4d8b55e3fe61585
+
             >
               <img class="buy-again-icon" src="images/icons/buy-again.png">
               <span class="buy-again-message ">Buy it again</span>
@@ -105,21 +102,15 @@ function settingOrderPage() {
       buyAgain.addEventListener('click',(()=>{
           
         let productId =buyAgain.dataset.productId
-<<<<<<< HEAD
+
+        
         let Quantity =buyAgain.dataset.productQuantity
 
-        console.log(Quantity)
-        addingToCart(productId , Quantity)
+        let Quantityy = Number(Quantity)
+        addingToCart(productId , Quantityy)
 
-        renderDeliverySummary()
-        updatingPriseSummary()
-=======
-         let quantity =buyAgain.dataset.productQu
- 
-      let  quantityy = Number(quantity)
         
-        addingToCart(productId , quantityy)
->>>>>>> e66917f3658d56ef1a957a0cd4d8b55e3fe61585
+
         
       }))
 
